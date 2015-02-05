@@ -5,10 +5,18 @@
 	Columbia University
 
 ## Instructor
+<<<<<<< HEAD
 Elliot Cohen, Ph.D.  
 **affiliations**  [QMSS](http://qmss.columbia.edu/faculty-and-staff/) | [Earth Institute](http://www.earth.columbia.edu/articles/view/58) | [Sustainable Engineering Lab](http://sel.columbia.edu/about/)  
 **contact**  elliot.cohen@columbia.edu | 212.854.7993  
 **office hours**  Wednesdays 2:30-3:30pm IAB 270C
+=======
+Elliot Cohen, PhD | [Earth Institute](http://www.earth.columbia.edu/articles/view/58) | [Sustainable Engineering Lab](http://sel.columbia.edu/about/) | [QMSS](http://qmss.columbia.edu/faculty-and-staff/)  
+email: elliot.cohen@columbia.edu  
+phone: 212.854.7993  
+office: Mudd 134F
+office hours: wed.230-330pm IAB 270F
+>>>>>>> ba9665957d27f40bb6c53ec268ec6c4f3af463fa
 
 ## Course Description   
 This course offers a rigorous introduction to data visualization from theory to implementation. Drawing on a combination of lectures, readings, discussions and coding, we will translate the timeless concepts of Minard, Playfair, Tufte and Wilkinson to new and diverse fields of study. Students will receive a coding crash-course in R, JavaScript, CSS, HTML and D3. The goal is not to become computer scientists, but to build the requisite foundation for modern implementation of exploratory and explanatory data visualizations. Students will have the opportunity to work in small teams to create interactive data visualizations worthy of their portfolios. The final deliverable will be a research-driven data visualization with accompanying prose in the form of a conference paper submission. A working knowledge of R from at least one previous class is highly recommended.  
