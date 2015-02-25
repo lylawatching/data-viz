@@ -87,7 +87,7 @@ getwd()
   
 Set the working directory
 ```
-setwd("~/github/qmssviz-FORK/labs/tutorial/_posts/")
+setwd("~/github/data-viz/r")
 ```
 
 ## Libraries
@@ -131,14 +131,14 @@ There are many different data formats available, each with its own purpose, virt
 You may also load data directly from other statistical packages including EpiInfo, Minitab, S-PLUS, SAS, SPSS, Stata and Systat. For a more complete description of data formats and their compatability with R, refer [here](http://cran.r-project.org/doc/manuals/r-release/R-data.html#Importing-from-other-statistical-systems). 
 
 ### .csv  
-First, let's read (e.g. import) a csv file. The most general and flexible way to read tabular data (e.g. comma seperated or tab seperated) is with the `read.table()` function. 
+First, let's read (e.g. import) a csv file. The most general and flexible way to read tabular data (e.g. comma separated or tab separated) is with the `read.table()` function. 
 
 As with any R function, I suggest reading the help file, which shows exactly how to use it, the required syntax, and a few reproducible examples. This is usually all you need to get started using a new function.
 ```
 ?read.table
 ```
 As you will see from the *help* file, there is a special case of `read.table()` tailored specifically to csv files.  The only difference between the two functions is the default values.  `read.csv()` expects a header row and a comma (",") as the character seperator whereas `read.table()` expects no header and a blank space (" ") as the character seperator. Default values can easily be changed to meet your specific needs by supplying a different value when calling the function.
-```{r csv, cache=TRUE}
+```{r csv}
 # Nigeria facility inventory
 file<-"sample_health_facilities.csv"
 sample_data <- read.csv(file) # read the .csv file
@@ -237,7 +237,7 @@ str(data)
 ```
 
 ## class
-Every element is R has a data type, also known as a `class`. Let's look at a few simple examples:
+Every element in R has a data type, also known as a `class`. Let's look at a few simple examples:
 ```{r class}
 class(1)
 class(TRUE)
@@ -251,6 +251,7 @@ class(data$Temp)
 ```
 
 The core class definitions in R include:
+
   1. numeric  
   2. integer  
   3. complex  
@@ -261,10 +262,10 @@ The core class definitions in R include:
   6. expression  
   8. factor  
     - factor is a generic data type used as an alternative to any of the above. Useful when keeping track of a limited set of recurring values within a vector of a `data.frame`.  
-    - Beware of challenges with factor => integer/numeric conversions.  
+    - Beware of factor! Handy for character strings and categorical variables, but integer/numeric conversions may produce unexpected results.
     - For additional information on working with factors in your data: [More information on Factors](http://www.statmethods.net/input/datatypes.html)  
 
-A note: `NA` (_Not Available_) is a internal value in R, and can be of any type. `NA` indicates a missing value.  More on this later.  
+**Note**: `NA` (_Not Available_) is a internal value, and can be of any type. `NA` indicates a missing value.  More on this later.  
 
 Before proceeding, let's delve more into dataframes, as they are a central concept in R.
 
@@ -308,7 +309,7 @@ names(data)
 
 To retrieve a particular column within a data.frame, we use the syntax: data.frame$column.  
 Alternatively, we use the syntax: data.frame[row number, column number]. 
-Again we can use the `head` function to show the first 6 records and supress the rest.
+Again we can use the `head` function to show the first 6 records and suppress the rest.
 ```{r head2}
 head(data$Temp)  # use head() to look at the first 6 records.
 head(data[, "Temp"])
@@ -404,7 +405,7 @@ range(data$Temp)
 ```
 Does that look right based on what we would expect for Delhi? 
 
-The -99 values could not possibly be real unless these temepratures were recorded at the top of Mt. Everest or in Antarctica in the dead of winter, which they were not. Let's remove them as erroenous.
+The -99 values could not possibly be real unless these temepratures were recorded at the top of Mt. Everest or in Antarctica in the dead of winter, which they were not. Let's remove them as erroneous.
 ```{r assign2}
 # assign NA to elements in the 'Temp' column with values equal to -99
 data$Temp[data$Temp==-99]<-NA
@@ -493,7 +494,7 @@ R supports SQL-like join functionality with `merge`. The `merge` function can me
 
 To illustrate join operations, let's create a simple example. Let's say we have two data.frames, the first, called 'icecream', contains each person's favorite flavor of icecream. The second, called 'color', contains each person's favorite color.  Here's what they  look like:
 ```{r ice-cream2}
-icecream<-data.frame(name=c("Joe", "Jonathan", "Elliot", "Vijay", "Candace"), icecream=c("vanilla", "chocalate", "coffee", "mint", "cherry"))
+icecream<-data.frame(name=c("Joe", "Jonathan", "Elliot", "Vijay", "Candace"), icecream=c("vanilla", "chocolate", "coffee", "mint", "cherry"))
 color<-data.frame(name=c("Joe", "Jonathan", "Elliot", "Vijay", "Candace"), color=c("red", "blue", "green", "orange", "purple"))
 
 icecream
@@ -513,7 +514,7 @@ cbind(icecream, color)
 Question: How is this different than `merge`?
 
 ## writing data
-Notice that the original data files that we imported at the beginning of this tutprial have not been changed, only manipulated in the R environment. If you open `Daily_Temperature_1995-2013_Delhi.txt`, it is the same as it was. If you want to save the changes we have made so far (e.g. removed missing data, added a Date attribute, etc..) you can write the current R object ('data) to an external file. This is like hitting the "save" button in Excel, but it is not done automatically in R; you have to do it expicitly.
+Notice that the original data files that we imported at the beginning of this tutorial have not been changed, only manipulated in the R environment. If you open `Daily_Temperature_1995-2013_Delhi.txt`, it is the same as it was. If you want to save the changes we have made so far (e.g. removed missing data, added a Date attribute, etc..) you can write the current R object ('data) to an external file. This is like hitting the "save" button in Excel, but it is not done automatically in R; you have to do it explicitly.
 
 To write a .csv, call the `write.csv` function and supply the name of the R object you wish to save ('data') and the desired filepath ("data.csv").
 ```
