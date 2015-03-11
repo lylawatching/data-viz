@@ -1,0 +1,30 @@
+---
+title: "Quiz3"
+output: html_document
+---
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r}
+#Load the data
+library("maps")
+data(airquality)
+airquality
+data<-airquality
+#Create a function that plot the data
+library(ggplot2)
+plot<-function(a,b) {
+  m<-subset(data,data$Month=="a")
+  a<-m$Month
+  b<-data$Ozone
+  g<-ggplot(data,aes(x=a,y=b),na.rm=T)
+  p<-g+geom_point(aes(color=y),size=2) 
+  p<-p+labs(title="Monthly Ozone Level")+theme(legend.position="none")
+  p<-p+xlab("Month")+ylab("Ozone Level")
+  p
+}
+plot(5,5)
+```
+
